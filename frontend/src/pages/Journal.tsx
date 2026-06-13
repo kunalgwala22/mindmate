@@ -132,13 +132,17 @@ export const Journal: React.FC = () => {
           </h2>
           <form onSubmit={handleSubmitJournal} className="space-y-4">
             <div>
+              <label htmlFor="journal-textarea" className="sr-only">Write your journal entry here</label>
               <textarea
+                id="journal-textarea"
+                name="journal-textarea"
                 value={journalContent}
                 onChange={(e) => setJournalContent(e.target.value)}
                 placeholder="Studied 10 hours but still feel anxious about Physics... Or say how mock test went..."
                 rows={5}
                 disabled={loading}
                 className="w-full p-4 bg-slate-950/60 border border-glassBorder rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neonPurple/60 focus:ring-1 focus:ring-neonPurple/40 transition-colors resize-none leading-relaxed text-sm"
+                aria-required="true"
               />
             </div>
             <div className="flex justify-between items-center">

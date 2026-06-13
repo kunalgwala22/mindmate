@@ -56,52 +56,61 @@ export const Register: React.FC = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
+            <label htmlFor="name" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
                 <User className="w-4 h-4" />
               </span>
               <input
+                id="name"
+                name="name"
                 type="text"
                 placeholder="Aarav Sharma"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-slate-950/60 border border-glassBorder rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-neonPurple/60 focus:ring-1 focus:ring-neonPurple/40 transition-colors"
                 required
+                aria-required="true"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
+            <label htmlFor="email" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
                 <Mail className="w-4 h-4" />
               </span>
               <input
+                id="email"
+                name="email"
                 type="email"
                 placeholder="you@examprep.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-slate-950/60 border border-glassBorder rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-neonPurple/60 focus:ring-1 focus:ring-neonPurple/40 transition-colors"
                 required
+                aria-required="true"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Password</label>
+            <label htmlFor="password" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Password</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
                 <Lock className="w-4 h-4" />
               </span>
               <input
+                id="password"
+                name="password"
                 type="password"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-slate-950/60 border border-glassBorder rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-neonPurple/60 focus:ring-1 focus:ring-neonPurple/40 transition-colors"
                 required
+                aria-required="true"
               />
             </div>
           </div>

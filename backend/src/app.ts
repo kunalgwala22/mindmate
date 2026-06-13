@@ -1,14 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import router from './routes';
 
-import { initializeDatabase } from './config/db';
-
-dotenv.config();
-
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
@@ -25,12 +19,5 @@ app.get('/health', (req, res) => {
 
 // Register routes
 app.use('/', router);
-
-// Initialize DB and Start server
-initializeDatabase().then(() => {
-  app.listen(PORT, () => {
-    console.log(`🚀 MindMate Server is running on port ${PORT}`);
-  });
-});
 
 export default app;

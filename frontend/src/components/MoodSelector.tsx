@@ -40,7 +40,7 @@ export const MoodSelector: React.FC<MoodSelectorProps> = ({ selectedMood, onSele
                 : 'bg-glassBg border-glassBorder hover:border-glassBorderHover'
             } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
           >
-            <span className="text-3xl mb-2 filter drop-shadow-md select-none transform hover:scale-125 transition-transform duration-200">
+            <span role="img" aria-label={m.label} className="text-3xl mb-2 filter drop-shadow-md select-none transform hover:scale-125 transition-transform duration-200">
               {m.emoji}
             </span>
             <span className={`text-sm font-medium ${isSelected ? m.color : 'text-slate-400'}`}>
