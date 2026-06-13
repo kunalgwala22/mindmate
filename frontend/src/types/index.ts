@@ -13,6 +13,7 @@ export interface Journal {
   id: number;
   content: string;
   created_at: string;
+  mood?: string;
   emotion?: string;
   sentiment?: string;
   stress_score?: number;

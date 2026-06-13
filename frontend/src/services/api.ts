@@ -109,5 +109,10 @@ export const api = {
     get: async (): Promise<AnalyticsData> => {
       return apiFetch<AnalyticsData>('/analytics');
     }
+  },
+  forecast: {
+    get: async (): Promise<any> => {
+      return apiFetch<any>('/ai/forecast');
+    }
   }
 };

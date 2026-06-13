@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Brain, Heart, Sparkles, TrendingUp } from 'lucide-react';
+import { 
+  Brain, Heart, Sparkles, TrendingUp, AlertCircle, 
+  CheckCircle2, Cpu, Database, Layout, ShieldCheck, FileText 
+} from 'lucide-react';
 
 export const Landing: React.FC = () => {
   return (
@@ -19,6 +22,10 @@ export const Landing: React.FC = () => {
           </span>
         </div>
         <div className="flex items-center space-x-4">
+          <Link to="/guide" className="text-sm font-semibold text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors">
+            <FileText className="w-4 h-4 text-neonBlue" />
+            <span>Walkthrough Guide</span>
+          </Link>
           <Link to="/login" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors duration-200">
             Log In
           </Link>
@@ -29,7 +36,7 @@ export const Landing: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 pt-20 pb-24 text-center relative z-10 flex flex-col items-center">
+      <section className="max-w-7xl mx-auto px-6 pt-20 pb-16 text-center relative z-10 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,8 +60,9 @@ export const Landing: React.FC = () => {
             <Link to="/register" className="px-8 py-4 rounded-xl text-md font-bold bg-gradient-to-r from-neonPurple to-neonBlue hover:from-purple-600 hover:to-cyan-500 shadow-glow-purple transition-all duration-300 transform hover:scale-105 text-white">
               Start Free Check-in
             </Link>
-            <Link to="/login" className="px-8 py-4 rounded-xl text-md font-bold glass-panel hover:bg-white/5 border border-glassBorder hover:border-glassBorderHover transition-all duration-300 text-slate-300 hover:text-white">
-              Access Dashboard
+            <Link to="/guide" className="px-8 py-4 rounded-xl text-md font-bold glass-panel hover:bg-white/5 border border-glassBorder hover:border-glassBorderHover transition-all duration-300 text-slate-300 hover:text-white flex items-center justify-center gap-2">
+              <FileText className="w-5 h-5 text-neonPurple" />
+              <span>Interactive Tech Guide</span>
             </Link>
           </div>
         </motion.div>
@@ -115,75 +123,121 @@ export const Landing: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Features Section */}
+      {/* Problem & Solution Showcase Section */}
       <section className="py-24 border-t border-slate-900 relative z-10 bg-slate-950/40">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold sm:text-4xl text-slate-100">
-              Specially Built for Competitive Exam Stress
-            </h2>
-            <p className="mt-4 text-slate-400 max-w-xl mx-auto">
-              Jeopardy of NEET, JEE, GATE, and UPSC require smart emotional analytics that generic trackers overlook.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-2xl glass-panel border-glassBorder hover:border-neonPurple/40 transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-neonPurple mb-6">
-                <Heart className="w-6 h-6" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+            {/* The Problem */}
+            <div className="p-8 rounded-3xl border border-rose-500/20 bg-rose-950/5 flex flex-col justify-between">
+              <div>
+                <span className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-rose-500/30 bg-rose-500/10 text-xs text-rose-400 font-bold mb-6">
+                  <AlertCircle className="w-3.5 h-3.5" />
+                  <span>THE PROBLEM STATEMENT</span>
+                </span>
+                <h2 className="text-3xl font-extrabold text-slate-100 mb-6">
+                  The Silent Toll of Competitive Prep
+                </h2>
+                <div className="space-y-4 text-slate-400 text-sm leading-relaxed">
+                  <p>
+                    Students prepping for high-stakes exams (like JEE, NEET, UPSC) operate under constant pressure. Burnout accumulates silently, with no feedback loop to catch it early.
+                  </p>
+                  <p>
+                    Traditional wellness apps fail because they are not contextualized for students. They offer generic advice instead of addressing specific pain points like mock test fear, peer comparison, and study schedules.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">Empathetic Companion</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Receive conversational, validation-based, non-judgmental guidance that reads between the lines of your diary.
-              </p>
+              <div className="mt-8 border-t border-rose-500/10 pt-6">
+                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-3">Key Vulnerabilities</div>
+                <ul className="grid grid-cols-2 gap-3 text-xs text-slate-400">
+                  <li className="flex items-center gap-2">❌ Sleep deprivation</li>
+                  <li className="flex items-center gap-2">❌ Performance anxiety</li>
+                  <li className="flex items-center gap-2">❌ Unhealthy peer comparison</li>
+                  <li className="flex items-center gap-2">❌ Emotional suppression</li>
+                </ul>
+              </div>
             </div>
 
-            <div className="p-8 rounded-2xl glass-panel border-glassBorder hover:border-neonBlue/40 transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-neonBlue mb-6">
-                <Sparkles className="w-6 h-6" />
+            {/* The Solution */}
+            <div className="p-8 rounded-3xl border border-emerald-500/20 bg-emerald-950/5 flex flex-col justify-between">
+              <div>
+                <span className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-xs text-emerald-400 font-bold mb-6">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>THE SOLUTION</span>
+                </span>
+                <h2 className="text-3xl font-extrabold text-slate-100 mb-6">
+                  Empathetic, Data-Driven Guidance
+                </h2>
+                <div className="space-y-4 text-slate-400 text-sm leading-relaxed">
+                  <p>
+                    MindMate AI acts as a 24/7 mental wellness coach. By check-in of mood emojis and diary journals, Gemini AI extracts hidden stress triggers and quantifies burnout risk.
+                  </p>
+                  <p>
+                    Students get personalized study adjustments, real-time companion support, and an interactive 4-7-8 breathing coach, enabling active stress regulation in a mock-ready dashboard.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">Hidden Trigger Analysis</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Gemini uncovers persistent patterns—such as mock test performance fear or comparison with friends—across multiple logs.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl glass-panel border-glassBorder hover:border-neonPurple/40 transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-neonPurple mb-6">
-                <TrendingUp className="w-6 h-6" />
+              <div className="mt-8 border-t border-emerald-500/10 pt-6">
+                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-3">Core Features</div>
+                <ul className="grid grid-cols-2 gap-3 text-xs text-slate-400">
+                  <li className="flex items-center gap-2">✨ Gemini stress indexing</li>
+                  <li className="flex items-center gap-2">✨ Interactive Breathing Coach</li>
+                  <li className="flex items-center gap-2">✨ AI Chat Companion</li>
+                  <li className="flex items-center gap-2">✨ Detailed stress & mood analytics</li>
+                </ul>
               </div>
-              <h3 className="text-xl font-bold mb-3">Stress Score Tracking</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Visualize stress metrics over time using Recharts trends, signaling early indicators of burnout before it hits.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How it Works Section */}
-      <section className="py-24 relative z-10">
+      {/* Technology Stack Visual Grid */}
+      <section className="py-24 border-t border-slate-900 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold sm:text-4xl text-slate-100">How It Works</h2>
+            <h2 className="text-3xl font-extrabold sm:text-4xl text-slate-100">
+              Modern Technology Stack & Architecture
+            </h2>
             <p className="mt-4 text-slate-400 max-w-xl mx-auto">
-              A quick 60-second daily routine to understand your mental state and restore energy.
+              Clean architecture designed for security, fast page renders, and reliable database indexing.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { step: '01', title: 'Check Mood', desc: 'Select one of 6 moods matching your instant state.' },
-              { step: '02', title: 'Write Log', desc: 'Jot down free-form thoughts about your study day, parents, or exams.' },
-              { step: '03', title: 'Get AI Review', desc: 'Gemini reviews your log to calculate stress scores and triggers.' },
-              { step: '04', title: 'Track Insights', desc: 'Watch long-term trends and implement localized coping plans.' },
-            ].map((s, idx) => (
-              <div key={idx} className="relative p-6 rounded-2xl bg-glassBg border border-glassBorder">
-                <div className="text-5xl font-black text-purple-500/10 absolute top-4 right-4">{s.step}</div>
-                <h3 className="text-lg font-bold mb-2 text-slate-200 mt-4">{s.title}</h3>
-                <p className="text-slate-400 text-sm">{s.desc}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* React Frontend */}
+            <div className="p-6 rounded-2xl glass-panel border-glassBorder flex flex-col justify-between">
+              <Layout className="w-10 h-10 text-neonBlue mb-6" />
+              <div>
+                <h3 className="text-md font-bold mb-1">React Client</h3>
+                <p className="text-slate-400 text-xs">Vite, TypeScript, Tailwind CSS, Recharts for trends, and Framer Motion.</p>
               </div>
-            ))}
+            </div>
+
+            {/* Node Backend */}
+            <div className="p-6 rounded-2xl glass-panel border-glassBorder flex flex-col justify-between">
+              <Cpu className="w-10 h-10 text-neonPurple mb-6" />
+              <div>
+                <h3 className="text-md font-bold mb-1">Express Server</h3>
+                <p className="text-slate-400 text-xs">Modular controllers, rate limiters, JWT authorization, and custom security headers.</p>
+              </div>
+            </div>
+
+            {/* MariaDB Database */}
+            <div className="p-6 rounded-2xl glass-panel border-glassBorder flex flex-col justify-between">
+              <Database className="w-10 h-10 text-amber-400 mb-6" />
+              <div>
+                <h3 className="text-md font-bold mb-1">MariaDB</h3>
+                <p className="text-slate-400 text-xs">Relational mapping with database indexing for high query speeds on mood & journal trends.</p>
+              </div>
+            </div>
+
+            {/* Gemini AI */}
+            <div className="p-6 rounded-2xl glass-panel border-glassBorder flex flex-col justify-between">
+              <Sparkles className="w-10 h-10 text-neonPink mb-6" />
+              <div>
+                <h3 className="text-md font-bold mb-1">Gemini AI Model</h3>
+                <p className="text-slate-400 text-xs">Empathetic analysis pipeline, stress triggers extraction, and chat response fallbacks.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -195,9 +249,14 @@ export const Landing: React.FC = () => {
           <p className="text-slate-400 mb-8 max-w-lg mx-auto">
             Join other students who track their wellness, optimize studies, and avoid exam burnout.
           </p>
-          <Link to="/register" className="px-8 py-4 rounded-xl text-md font-bold bg-gradient-to-r from-neonPurple to-neonBlue hover:from-purple-600 hover:to-cyan-500 shadow-glow-purple text-white transition-all duration-300 inline-block transform hover:scale-105">
-            Register Instantly
-          </Link>
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
+            <Link to="/register" className="px-8 py-4 rounded-xl text-md font-bold bg-gradient-to-r from-neonPurple to-neonBlue hover:from-purple-600 hover:to-cyan-500 shadow-glow-purple text-white transition-all duration-300 transform hover:scale-105">
+              Register Instantly
+            </Link>
+            <Link to="/guide" className="px-8 py-4 rounded-xl text-md font-bold glass-panel hover:bg-white/5 border border-glassBorder hover:border-glassBorderHover transition-all duration-300 text-slate-300 hover:text-white">
+              Read Walkthrough Guide
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -206,8 +265,8 @@ export const Landing: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
           <div>&copy; 2026 MindMate AI. Built for Wellness Hackathon.</div>
           <div className="flex space-x-6">
-            <span className="hover:text-slate-300 cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-slate-300 cursor-pointer">Terms of Service</span>
+            <span>Privacy Policy</span>
+            <span>Terms of Service</span>
           </div>
         </div>
       </footer>

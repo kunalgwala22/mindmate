@@ -69,8 +69,14 @@ export const initializeDatabase = async () => {
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     `);
 
+    // Create indexes for query performance optimization (Phase 6)
+    console.log('⚡ Ensuring database performance indexes exist...');
+    await connection.query('CREATE INDEX IF NOT EXISTS idx_moods_user_created ON moods (user_id, created_at);');
+    await connection.query('CREATE INDEX IF NOT EXISTS idx_journals_user_created ON journals (user_id, created_at);');
+    await connection.query('CREATE INDEX IF NOT EXISTS idx_ai_analysis_journal ON ai_analysis (journal_id);');
+
     connection.release();
-    console.log('✅ Database tables are verified and ready.');
+    console.log('✅ Database tables and indexes are verified and ready.');
   } catch (error) {
     console.error('❌ Database initialization failed:', error);
   }

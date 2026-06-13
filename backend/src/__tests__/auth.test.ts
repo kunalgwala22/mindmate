@@ -73,6 +73,24 @@ describe('Authentication API Endpoints', () => {
       expect(response.status).toBe(400);
       expect(response.body.message).toContain('required');
     });
+
+    it('should sanitize HTML input to prevent XSS attacks', async () => {
+      // Mock no existing user
+      (pool.query as jest.Mock).mockResolvedValueOnce([[]]);
+      // Mock successful insert
+      (pool.query as jest.Mock).mockResolvedValueOnce([{ insertId: 42 }]);
+
+      const response = await request(app)
+        .post('/auth/register')
+        .send({
+          name: '<script>alert("hack")</script> Jane',
+          email: 'jane_xss@example.com',
+          password: 'securePassword123',
+        });
+
+      expect(response.status).toBe(201);
+      expect(response.body.user.name).toBe('&lt;script&gt;alert(&quot;hack&quot;)&lt;&#x2F;script&gt; Jane');
+    });
   });
 
   describe('POST /auth/login', () => {

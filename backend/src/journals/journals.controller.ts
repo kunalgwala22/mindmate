@@ -86,7 +86,8 @@ export const getJournals = async (req: AuthenticatedRequest, res: Response) => {
     const [journals] = await pool.query<RowDataPacket[]>(
       `SELECT j.id, j.content, j.created_at, 
               a.emotion, a.sentiment, a.stress_score, a.stress_trigger, 
-              a.summary, a.coping_strategy, a.motivation
+              a.summary, a.coping_strategy, a.motivation,
+              COALESCE((SELECT m.mood FROM moods m WHERE m.user_id = j.user_id AND m.created_at <= j.created_at ORDER BY m.created_at DESC LIMIT 1), 'Neutral') as mood
        FROM journals j
        LEFT JOIN ai_analysis a ON j.id = a.journal_id
        WHERE j.user_id = ?

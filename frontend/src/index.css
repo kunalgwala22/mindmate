@@ -14,6 +14,17 @@
   --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.25);
   --shadow-glow-blue: 0 0 20px rgba(34, 211, 238, 0.25);
   --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  --animate-shimmer: shimmer 2.5s infinite linear;
+
+  @keyframes shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
 }
 
 @utility glass-panel {
