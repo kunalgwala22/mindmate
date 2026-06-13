@@ -4,6 +4,8 @@ import { api, getUser } from '../services/api';
 import { DashboardStats, AnalyticsData, User } from '../types';
 import { StressChart } from '../components/StressChart';
 import { EmotionChart } from '../components/EmotionChart';
+import { ChatCompanion } from '../components/ChatCompanion';
+import { BreathingCoach } from '../components/BreathingCoach';
 import { 
   Brain, LogOut, BookOpen, AlertCircle, Sparkles, 
   Smile, ShieldAlert, Zap, Award, Flame, Calendar
@@ -291,6 +293,16 @@ export const Dashboard: React.FC = () => {
               <span>JOURNALS LOGGED: {metrics?.journalCount || 0}</span>
               <span className="flex items-center space-x-1"><Award className="w-3.5 h-3.5 text-neonPurple" /> <span>MindMate Premium</span></span>
             </div>
+          </div>
+        </div>
+
+        {/* Hackathon Standout Features: AI Coping & Interactive Tools */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+          <div className="lg:col-span-2">
+            <ChatCompanion currentMood={metrics?.currentMood} />
+          </div>
+          <div>
+            <BreathingCoach />
           </div>
         </div>
 
